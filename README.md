@@ -6,7 +6,7 @@
 
 ---
 
-## Dataset 설명
+## Dataset 설명 (spam_emails_data.csv)
 - **kaggle에 있는 문장 분류를 위한 메일 Ham/Spam Dataset**을 이용 
 - 이메일 문장인 `text` 와 `label`로 구성되어 있음.
 - 행은 총 **193,849개**의 데이터를 가지고 있음.
@@ -48,7 +48,7 @@
 
 ### MobileBERT 모델 설정
 - **모델 아키텍처**: MobileBERT는 BERT의 경량화된 버전으로, 빠르고 효율적인 성능을 제공합니다.
-- **학습 데이터**:` 전처리된 이메일 텍스트`와 `정규화 된 label`값 **HAM(0), SPAM(1)** 을 학습 데이터로 사용합니다.
+- **학습 데이터**: `전처리된 이메일 텍스트`와 `정규화 된 label`값 **HAM(0), SPAM(1)** 을 학습 데이터로 사용합니다.
 
 ### 학습 파라미터
 - **배치 크기**: 48
@@ -81,4 +81,4 @@
 ---
 ### reference
 - https://www.kaggle.com/datasets/meruvulikith/190k-spam-ham-email-dataset-for-classification (MIT Lisence)
-- 
+- https://github.com/hschu/finetuning_mobilebert
