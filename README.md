@@ -67,12 +67,12 @@
 ## 결과 분석 및 모델 개선 (MobileBERT-inference.py)
 
 ### 모델 성능 결과
-![result](picture/result.png/)
-- 전체 데이터 76,183건에 대해서 **98% 정확도**를 보임.
+![result](picture/result.png)
+- 전체 테스트 데이터 76,183건에 대해서 **98% 정확도**를 보임.
 
 ### 모델 개선 방법
 - **하이퍼파라미터 튜닝**: 학습률, 배치 크기 등 모델의 하이퍼 파라미터를 조정하여 성능을 최적화 합니다.
-- **데이터 증강**: 일반적인 데이터(HAM)과 (SPAM)에 관한 데이터를 추가 합니다.
+- **데이터 증강**: dataset에 Ham(정상)과 Spam(스팸) 관련 데이터를 증강.
 
 ## 결론
 
@@ -80,5 +80,5 @@
 
 ---
 ### reference
-- https://www.kaggle.com/datasets/meruvulikith/190k-spam-ham-email-dataset-for-classification
+- https://www.kaggle.com/datasets/meruvulikith/190k-spam-ham-email-dataset-for-classification (MIT Lisence)
 - 
