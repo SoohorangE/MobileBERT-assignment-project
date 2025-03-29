@@ -32,7 +32,7 @@
 ### 3~4. 데이터 샘플링 후 저장 (data-sample-export.py)
 - **CSV 데이터 읽기**: 위에 생성했던 `spam_emails_data-filter.csv` 파일을 읽어 들입니다.
 - **데이터 샘플링**: `label` 값에 따라 13,000개의 샘플을 각각 추출하여 균형 잡힌 데이터를 만듭니다.
-- **샘플링된 데이터와 나머지 데이터 분리**: - **샘플링된 데이터와 검증 데이터 분리**: `scikit-learn`의 `train_test_split` 함수를 사용하여 데이터를 무작위로 분리한 후, 샘플링된 데이터와 나머지 데이터를 두 개의 CSV 파일로 저장합니다.
+- **샘플링된 데이터와 나머지 데이터 분리**: - **샘플링된 데이터와 검증 데이터 분리**: `scikit-learn`의 `train_test_split` 함수를 사용하여 데이터를 무작위로 분리한 후, 샘플링된 데이터와 검증 데이터를 두 개의 CSV 파일로 저장합니다.
   - `spam_emails_sampled_filter.csv`: 샘플링된 데이터
   - `spam_emails_remaining_filter.csv`: 검증 데이터
 ---
