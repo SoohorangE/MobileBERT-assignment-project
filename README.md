@@ -12,6 +12,7 @@
 - 행은 총 **193,849개**의 데이터를 가지고 있음.
 - csv 파일로 저장되어 있기 때문에 `특정 이메일 문장이 너무 길어 엑셀이나 pandas로 열었을때 문자 깨짐` 발생
 (데이터 전처리 필요)
+![data-preprocessing-csv](picture/data-preprocessing-csv.png)
 
 ---
 
