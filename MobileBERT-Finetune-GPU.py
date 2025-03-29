@@ -27,7 +27,7 @@ labels = df['label'].values
 
 print("### 데이터 샘플 ###")
 print("리뷰 문장", data_X[:5])
-print("중립/긍정/부정 : ", labels[:5])
+print("정상/스팸 : ", labels[:5])
 
 # 3. 텍스트를 토큰으로 나눔(토큰화)
 
@@ -53,7 +53,7 @@ train_mask, validation_mask, _, _ = train_test_split(attention_mask, labels, tes
 
 # 5. MobileBERT에 영회 리뷰 데이터를 Finetuning하기 위한 데이터 설정
 # batch size는 한 번에 학습하는 데이터 양
-batch_size = 64
+batch_size = 48
 
 # 학습용 데이터 로더 구현 (torch tensor)
 
@@ -80,7 +80,7 @@ validation_dataloader = DataLoader(validation_data, sampler=validation_sampler, 
 
 
 # 6. 모델 설정
-model = MobileBertForSequenceClassification.from_pretrained('mobilebert-uncased', num_labels=3)
+model = MobileBertForSequenceClassification.from_pretrained('mobilebert-uncased', num_labels=2)
 model.to(device)
 
 optimizer = torch.optim.AdamW(model.parameters(), lr=2e-5, eps=1e-8)
@@ -184,6 +184,6 @@ for idx, (loss, train_acc, val_acc) in enumerate(epoch_results, start=1):
     print(f"epoch {idx} Train loss: {loss:.4f}, Train Accuracy: {train_acc:.4f}, Validation Accuracy: {val_acc:.4f}")
 
 print("\n### 모델 저장 ###")
-save_path = "mobilebert_custom_model_youtube"
+save_path = "mobilebert_custom_model"
 model.save_pretrained(save_path + '.pt')
 print("모델 저장 완료")
