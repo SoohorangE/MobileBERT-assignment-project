@@ -2,27 +2,28 @@ import torch
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
-from sympy.physics.units.systems import natural
+
 from transformers import get_linear_schedule_with_warmup, logging
 from transformers import MobileBertForSequenceClassification, MobileBertTokenizer
 from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
 from tqdm import tqdm
+
 import re
 
 # 0. GPU 있는지 확인, 없으면 CPU 구동
-gpu = torch.backends.mps.is_available()
+gpu = torch.cuda.is_available()
 
-device = torch.device("mps" if gpu else "cpu")
+device = torch.device("cuda" if gpu else "cpu")
 print("using device:", device)
 
 # 1. 학습 시 경고 메세지 제거
 logging.set_verbosity_error()
 
 # 2. 데이터 확인
-path = "spam_Emails_data-filter.csv"
+path = "spam_emails_sampled_filter.csv"
 df = pd.read_csv(path, encoding="cp949")
 
-data_X = list(df['text'].values)
+data_X = df['text'].astype(str).tolist()
 labels = df['label'].values
 
 print("### 데이터 샘플 ###")
@@ -31,7 +32,7 @@ print("정상/스팸 : ", labels[:5])
 
 # 3. 텍스트를 토큰으로 나눔(토큰화)
 
-tokenizer = MobileBertTokenizer.from_pretrained('mobilebert-uncased', do_lower_case=True, clean_up_tokenization_spaces=True)
+tokenizer = MobileBertTokenizer.from_pretrained('mobilebert-uncased', do_lower_case=True)
 inputs = tokenizer(data_X, truncation=True, max_length=256, add_special_tokens=True, padding="max_length")
 
 input_ids = inputs['input_ids']
@@ -53,7 +54,7 @@ train_mask, validation_mask, _, _ = train_test_split(attention_mask, labels, tes
 
 # 5. MobileBERT에 영회 리뷰 데이터를 Finetuning하기 위한 데이터 설정
 # batch size는 한 번에 학습하는 데이터 양
-batch_size = 48
+batch_size = 8
 
 # 학습용 데이터 로더 구현 (torch tensor)
 
