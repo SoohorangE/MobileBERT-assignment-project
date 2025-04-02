@@ -1,3 +1,4 @@
 mobilebert-uncased/pytorch_model.bin filter=lfs diff=lfs merge=lfs -text
 spam_emails_data-filter.csv filter=lfs diff=lfs merge=lfs -text
 spam_emails_data.csv filter=lfs diff=lfs merge=lfs -text
+mobilebert_custom_model.pt/model.safetensors filter=lfs diff=lfs merge=lfs -text
