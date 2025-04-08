@@ -41,9 +41,9 @@
 ### 3~4. 데이터 샘플링 후 저장 (data-sample-export.py)
 - **CSV 데이터 읽기**: 위에 생성했던 `spam_emails_data_filtered.csv` 파일을 읽어 들입니다.
 - **데이터 샘플링**: `label` 값에 따라 13,000개의 샘플을 각각 추출하여 균형 잡힌 데이터를 만듭니다.
-- **샘플링된 데이터와 검증 데이터 분리**: 데이터를 무작위로 분리한 후, 샘플링된 데이터와 검증 데이터를 두 개의 CSV 파일로 저장합니다.
+- **샘플링된 데이터와 검증 데이터 분리**: 데이터를 무작위로 분리한 후, 샘플링된 데이터와 테스트 데이터를 두 개의 CSV 파일로 저장합니다.
   - `spam_emails_sampled_filter.csv`: 샘플링된 데이터
-  - `spam_emails_remaining_filter.csv`: 검증 데이터
+  - `spam_emails_remaining_filter.csv`: 테스트 데이터
 ---
 
 ## 토큰화
@@ -102,9 +102,9 @@
 ---
 
 
-### 모델 검증 데이터 결과 (MobileBERT-inference.py)
+### 모델 테스트 결과 (MobileBERT-inference.py)
 ![result](picture/result.png)
-- `spam_emails_remaining_filter.csv`에서 불러온 검증 데이터 50,113건에 대해서 **98% 정확도**를 보임.
+- `spam_emails_remaining_filter.csv`에서 불러온 테스트 데이터 50,113건에 대해서 **98% 정확도**를 보임.
 
 ### 모델 개선 방법
 - **하이퍼파라미터 튜닝**: 학습률, 배치 크기 등 모델의 하이퍼 파라미터를 조정하여 성능을 최적화 합니다.
