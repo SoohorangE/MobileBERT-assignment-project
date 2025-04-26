@@ -1,22 +1,13 @@
 import pandas as pd
-import nltk
-from nltk.corpus import stopwords
 from langdetect import detect, LangDetectException
 import re
-
-# NLTK의 stopwords 다운로드
-nltk.download('stopwords')
-stop_words = set(stopwords.words('english'))
 
 def clean_text(text):
     if not isinstance(text, str):
         return ""
     # 특수문자 제거 및 소문자 변환
     text = re.sub(r'[^a-zA-Z0-9\s]', '', text.lower())
-    # 불용어 제거
-    words = text.split()
-    filtered_words = [word for word in words if word not in stop_words]
-    return ' '.join(filtered_words)
+    return text
 
 def is_english(text):
     try:
@@ -39,7 +30,7 @@ filtered_df = filtered_df[filtered_df['text'].apply(lambda x: len(x) <= 1024 if 
 # 영어로 작성된 텍스트만 필터링
 filtered_df = filtered_df[filtered_df['text'].apply(is_english)]
 
-# 텍스트 정제 및 불용어 제거
+# 텍스트 정제
 filtered_df['text'] = filtered_df['text'].apply(clean_text)
 
 # 'label'과 'text' 컬럼이 같은 중복된 행을 제거
