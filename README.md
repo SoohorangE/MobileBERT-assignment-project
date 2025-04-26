@@ -15,7 +15,7 @@
   - 파일을 다운로드 받습니다.
   - conda env create --file setting.yaml 를 입력하여 환경을 구성 합니다. (anaconda에 torch251_gpu 환경이 구성되어 있다면 삭제 해야 합니다.)
   - pycharm 프로젝트 인터프린터 구성을 하게 되면 실행을 위한 모든 환경 설정 구성이 끝납니다.
-
+sss
 ---
 
 ## Dataset 설명 (spam_emails_data.csv)
