@@ -8,12 +8,11 @@ from transformers import MobileBertForSequenceClassification, MobileBertTokenize
 from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
 from tqdm import tqdm
 
-import re
-
 # 0. GPU 있는지 확인, 없으면 CPU 구동
-gpu = torch.cuda.is_available()
+# gpu = torch.cuda.is_available()
+gpu = torch.backends.mps.is_available()
 
-device = torch.device("cuda" if gpu else "cpu")
+device = torch.device("mps" if gpu else "cpu")
 print("using device:", device)
 
 # 1. 학습 시 경고 메세지 제거
