@@ -96,9 +96,9 @@
 
 ### 모델 평가
 
-![train](picture/train.png)
-- **평가 지표**: 모델의 예측 성능을 확인하고 **accuracy와, loss**를 통해 모델의 전반적인 성능을 평가합니다.
-  - `위에 사진을 봤을때 모델의 훈련은 잘되었다고 판단`할 수 있습니다.
+> ![train](picture/train.png)<br>
+**평가 지표**: 모델의 예측 성능을 확인하고 **accuracy와, loss**를 통해 모델의 전반적인 성능을 평가합니다.<br><br>
+위에 사진을 봤을때 모델의 훈련은 잘되었다고 판단할 수 있습니다.
 
 ### 모델 저장
 - 학습된 모델의 가중치를 `mobilebert_custom_model.pt` 폴더에 저장합니다.
@@ -111,25 +111,25 @@
 ## 스팸 데이터 분석
 ![spam](picture/32.png)
 
-> 32번 문장데이터를 보았을떄 모델에서 `go, http, prescription, campaigns 라는 단어에 집중` 하는 모습을 볼 수 있음.
-![spam2](picture/32-1.png)
-최종적으로 FCN(최종층)에서 값을 계산한 결과 `1번 클래스의 값이 높으므로 스팸으로 분류됨`
+> 32번 문장데이터를 보았을떄 모델에서 **go, http, prescription, campaigns** 라는 단어에 집중 하는 모습을 볼 수 있음.<br>
+![spam2](picture/32-1.png)<br>
+최종적으로 FCN(최종층)에서 값을 계산한 결과 **1번 클래스의 값이 높으므로 스팸으로 분류됨**
 
 ## 정상 데이터 분석
 
 ![ham](picture/4.png)
 
-> 4번 문장데이터를 보았을떄 모델에서 `news, tape, morning 라는 단어에 집중` 하는 모습을 볼 수 있음.
-![ham2](picture/4-1.png)
-최종적으로 FCN(최종층)에서 값을 계산한 결과 `0번 클래스의 값이 높으므로 정상으로 분류됨`
+> 4번 문장데이터를 보았을떄 모델에서 **news, tape, morning** 라는 단어에 집중 하는 모습을 볼 수 있음.<br>
+![ham2](picture/4-1.png)<br>
+최종적으로 FCN(최종층)에서 값을 계산한 결과 **0번 클래스의 값이 높으므로 정상으로 분류됨**
 
 
 ---
 
 
 ### 모델 테스트 결과 (MobileBERT-inference.py)
-![result](picture/result.png)
-- `spam_emails_remaining_filter.csv`에서 불러온 테스트 데이터 50,113건에 대해서 **98% 정확도**를 보임.
+> ![result](picture/result.png)<br>
+비교 데이터 64,147건에 대해서 **98% 정확도**를 보임.
 
 ### 모델 개선 방법
 - **하이퍼파라미터 튜닝**: 학습률, 배치 크기 등 모델의 하이퍼 파라미터를 조정하여 성능을 최적화 합니다.
