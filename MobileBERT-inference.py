@@ -5,9 +5,10 @@ import numpy as np
 from transformers import MobileBertForSequenceClassification, MobileBertTokenizer
 from tqdm import tqdm
 
-GPU = torch.cuda.is_available()
+#GPU = torch.cuda.is_available()
+GPU = torch.backends.mps.is_available()
 
-device = torch.device("cuda" if GPU else "cpu")
+device = torch.device("mps" if GPU else "cpu")
 print("Using device:", device)
 
 data_path = "spam_emails_remaining_filter.csv"
@@ -58,4 +59,4 @@ for batch in tqdm(test_dataloader, desc="Inferencing Full Dataset"):
     test_true.extend(batch_labels.cpu().numpy())
 
 test_accuracy = np.sum(np.array(test_pred) == np.array(test_true)) / len(test_pred)
-print("전체 데이터 50,113건에 대한 스팸/정상 정확도 : ", test_accuracy)
+print("전체 데이터 64,147건에 대한 스팸/정상 정확도 : ", test_accuracy)
