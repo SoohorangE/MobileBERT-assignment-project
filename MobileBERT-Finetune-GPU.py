@@ -25,6 +25,9 @@ df = pd.read_csv(path, encoding="cp949")
 data_X = df['text'].astype(str).tolist()
 labels = df['label'].values
 
+data_X = data_X[:4750]
+labels = labels[:4750]
+
 print("### 데이터 샘플 ###")
 print("리뷰 문장", data_X[:5])
 print("정상/스팸 : ", labels[:5])
