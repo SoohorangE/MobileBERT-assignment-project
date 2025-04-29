@@ -130,9 +130,30 @@
 | 8 | LDA 모델 학습 및 토픽 출력 | 각각 3개 토픽 추출 (`spam`, `normal` 각각) |
 | 9 | LDA 결과 시각화 및 저장 | `pyLDAvis`를 이용해 HTML 파일(`spam_topics.html`, `normal_topics.html`)로 저장 |
 
-### 스팸 메일로 분류된 데이터 분석(토픽모델링)
+### 스팸 메일로 분류된 데이터 분석
+| 토픽 번호 | 주요 키워드 | 해석 |
+|-----------|-------------|------|
+| **Topic 1** | `http`, `com`, `www`, `please`, `best`, `quality`, `get`, `click`, `low`, `online` | 온라인 쇼핑/광고 관련. 저품질 제품, 클릭 유도형 마케팅 링크 포함. |
+| **Topic 2** | `http`, `adobe`, `price`, `day`, `net`, `professional`, `new`, `get`, `news` | 소프트웨어 할인/광고. Adobe 등 유명 소프트웨어 이름을 사칭한 스팸일 가능성 있음. |
+| **Topic 3** | `see`, `may`, `com`, `time`, `one`, `email`, `like`, `try`, `phone` | 일반적인 스팸 대화 표현. 사용자 유도 문구 (`try`, `see`, `like`) 포함됨. |
 
 
+### 정상 메일로 분류된 데이터 분석
+
+| 토픽 번호 | 주요 키워드 | 해석 |
+|-----------|-------------|------|
+| **Topic 1** | `org`, `http`, `help`, `perl`, `list`, `posting`, `guide`, `stat`, `ethz` | 기술 문서/개발 관련 메일. 개발자 커뮤니티 또는 기술 안내 내용. |
+| **Topic 2** | `sent`, `subject`, `message`, `original`, `thanks`, `please`, `know`, `attached`, `monday`, `november` | 일반적인 업무용 커뮤니케이션. 회신, 감사 인사, 날짜 언급 중심. |
+| **Topic 3** | `com`, `enron`, `please`, `email`, `would`, `http`, `mail`, `information`, `thanks`, `new` | 회사 내부 이메일. 기업 커뮤니케이션 흐름을 나타냄. |
+
+
+### 데이터 분석 결론
+
+| 분류 | 주제 경향 | 특징 |
+|------|-----------|------|
+| **스팸 메일** | 광고, 유도, 브랜드 사칭 키워드 다수 | 클릭 유도, 피싱, 판촉 메시지 중심 |
+| **정상 메일** | 업무, 기술 문서, 감사 표현 등 | 조직 내 커뮤니케이션 또는 개발/기술 관련 |
+---
 
 ## 토큰화
 
