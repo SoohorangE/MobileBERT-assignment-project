@@ -207,7 +207,6 @@ LDA 기반의 토픽 모델링을 통해 스팸 메일로 분류된 데이터에
 - 결과적으로, 스팸 메일은 단일한 유형이 아니라 여러 가지 주제로 구성돼 있으며, 다양한 방식으로 사용자의 클릭이나 반응을 유도하고 있다는 점을 확인할 수 있었다. 앞으로 스팸 필터링 모델을 개발하거나 개선할 때 이런 토픽별 특징을 반영하면, 더 정밀하고 효과적인 탐지가 가능할 것으로 보인다.
 ---
 
----
 ### reference
 - https://www.kaggle.com/datasets/meruvulikith/190k-spam-ham-email-dataset-for-classification (MIT Lisence)
 - https://github.com/hschu/finetuning_mobilebert
