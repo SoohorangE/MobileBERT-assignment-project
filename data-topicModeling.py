@@ -14,7 +14,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 
 # 데이터 불러오기
-data = pd.read_csv("spam_emails_data_filtered.csv")
+data = pd.read_csv("spam_emails_model_predict.csv")
 
 custom_stopwords = set(['escapenumber', 'escapelong'] + stopwords.words('english'))
 
@@ -29,10 +29,6 @@ def preprocess(text):
 
 # 전처리 적용
 data['clean_text'] = data['text'].apply(preprocess)
-
-# 라벨별 데이터 분리
-data_spam = data[data['label'] == 1]
-data_normal = data[data['label'] == 0]
 
 # Gensim LDA 모델링 함수
 def topic_modeling_gensim(texts, n_topics=5, html_filename="lda_vis.html"):
@@ -54,10 +50,5 @@ def topic_modeling_gensim(texts, n_topics=5, html_filename="lda_vis.html"):
 
     return lda
 
-# 스팸 토픽
-print("== 스팸 (label=1) 토픽 ==")
-lda_spam = topic_modeling_gensim(data_spam['clean_text'], n_topics=3, html_filename="spam_topics.html")
-
-# 정상 토픽
-print("\n== 정상 (label=0) 토픽 ==")
-lda_normal = topic_modeling_gensim(data_normal['clean_text'], n_topics=3, html_filename="normal_topics.html")
+print("== 토픽 ==")
+lda_spam = topic_modeling_gensim(data['clean_text'], n_topics=6, html_filename="spam_topics.html")

@@ -9,10 +9,10 @@ from torch.utils.data import TensorDataset, DataLoader, RandomSampler, Sequentia
 from tqdm import tqdm
 
 # 0. GPU 있는지 확인, 없으면 CPU 구동
-# gpu = torch.cuda.is_available()
-gpu = torch.backends.mps.is_available()
+gpu = torch.cuda.is_available()
+# gpu = torch.backends.m/ps.is_available()
 
-device = torch.device("mps" if gpu else "cpu")
+device = torch.device("cuda" if gpu else "cpu")
 print("using device:", device)
 
 # 1. 학습 시 경고 메세지 제거
@@ -24,9 +24,6 @@ df = pd.read_csv(path, encoding="cp949")
 
 data_X = df['text'].astype(str).tolist()
 labels = df['label'].values
-
-data_X = data_X[:4750]
-labels = labels[:4750]
 
 print("### 데이터 샘플 ###")
 print("리뷰 문장", data_X[:5])
@@ -122,7 +119,7 @@ for e in range(epochs):
 
         loss.backward()
 
-        torch.nn.utils.clip_grad_norm(model.parameters(), 1.0)
+        torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
         optimizer.step()
         scheduler.step()
 
